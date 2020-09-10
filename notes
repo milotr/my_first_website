@@ -68,7 +68,56 @@ CONDITIONAL STATEMENTS
     {% else %}
     {% endif %}
 
+    {% for n in list%}
+    {{ n }}
+    {% endfor %}
+
 CSS
     CSS is applied for STATIC htmls which means that they don't change or not dynamic.
     html: href="{% static 'newyear/style.css' %}" #static means django will figure it out.
+
+TEMPLATE INHERITANCE: 
+    Making the same template by putting this:
+        {% block body %}
+        {% endblock %}
+    replace the key part with and keep the identical parts the same. 
+
+    For the key main part file, include this: 
+        {% extends "APP_NAME/template.html" %}
+
+        {% block body%}
+        {% endblock %}
+
+LINKING USING NAMES:
+        <a href="{% url 'add' %}"> Add a new task </a> 
+    The name 'add' is in urls.py of application tasks
+    Python will figure out the html file.
+
+Name collisions:
+    In order to avoid this 
+    Include:
+        app_name = "..." into urls.py of the paplication
+    into the specified html file.
+
+    <a href="{% url 'app_name:add' %}"> Add a new task </a> 
+
+FORM ATCTION METHOD:
+<form action="{% url 'tasks:add' %}" method="post">
+There are 2 methods: GET and POST
+using post means for forms and sensitive information
+
+Middle-ware: example POST requires CSRF 
+It interveins the request and get progress.
+
+So we need CSRF token by adding {{ csrf_token }}
+
+Making forms by class from django makes things easier.
+
+CLIENT-SERVER VALIDATION:
+notes in tasks/views.py
+
+SESSIONS:
+Store data in different sessions
+
+
 
