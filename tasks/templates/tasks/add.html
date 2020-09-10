@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks</title>
-</head>
-<body>
+{% extends "tasks/layout.html" %}
+
+{% block body%}
     <h1>Add tasks</h1>
     <ul>
         <form action="">
@@ -13,5 +8,4 @@
             <input type="submit">
         </form>
     </ul>
-</body>
-</html>
+{% endblock %}

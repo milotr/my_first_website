@@ -1,0 +1,74 @@
+DJANGO COMMAND LINES:
+    django-admin startproject PROJECT_NAME
+
+    python3 manage.py startapp APP_NAME
+
+    python3 manage.py runserver
+
+
+
+
+### manage.py -- 
+
+### views.py -- each views that someone can someone
+usually by making function in python
+
+### urls.py -- list of url names "urlpatterns" = [
+    path("", views.function, name="index")
+]
+    name uses to reference to a website.
+
+    urls.py for the entire project uses for linking all the application. 
+
+    path('APP_NAME/', include("APP_NAME.urls"))
+
+### settings.py -- created django uses for config
+
+    INSTALLED_APPS. added by 'APP_NAME',
+
+
+VARIABLES
+
+views.py -- 
+    def greet(request,name):
+        return HttpResponse(f"Hello, {name}!")
+
+urls.py
+    path("<str:name>", views.greet, name="greet")
+
+# this "<str:name>" will pass the parameter to the greet function.
+
+views.py -- capitalize names 
+    def greet(request,name):
+        return HttpResponse(f"Hello, {name.capitalize()}!")
+
+BEST PRACTICE:
+Trying to seperate HTMLs in views.py by using the commands:
+    def index(request):
+        return render(request, "APP_NAME/name.html")
+
+Making different folder calls "Templates". 
+
+Since that we seperate HTMLs with views.py, we need a different command:
+    def greet(request, name):
+        return render(request, "hello/greet.html", {
+            "name": name_capitalize() #giving access to a variable calls name and its value
+        })
+    # "name" is a string that is a variable that HTML has access to.
+    # :"..." value of the variable that python refers to. 
+    
+    In order to name a variable in HTML: use {{ VARIALBE }} this will insert the value of the variable. 
+
+
+CONDITIONAL STATEMENTS
+    Implement this in views.py function.
+    {%%} - django logics in HTML
+
+    {% if BOOLEAN%}
+    {% else %}
+    {% endif %}
+
+CSS
+    CSS is applied for STATIC htmls which means that they don't change or not dynamic.
+    html: href="{% static 'newyear/style.css' %}" #static means django will figure it out.
+
